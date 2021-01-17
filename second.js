@@ -1,7 +1,9 @@
 window.addEventListener("message", (event) => {
-  if (event.origin !== 'http://127.0.0.1:50570/') {
+  if (event.origin !== 'http://127.0.0.1:50570') {
     return
   }
+  console.log('message was received');
+
 
   const data = JSON.parse(event.data)
   const { method, key, value } = data;
