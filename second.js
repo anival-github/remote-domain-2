@@ -1,5 +1,5 @@
 window.addEventListener("message", (event) => {
-  if (event.origin !== 'http://127.0.0.1:61674') {
+  if (event.origin !== 'http://127.0.0.1:50570/') {
     return
   }
 
@@ -12,6 +12,8 @@ window.addEventListener("message", (event) => {
     readData(key)
   } else if (method === 'delete') {
     removeData(key)
+  } else {
+    throw new Error('Invalid method')
   }
 });
 
@@ -25,7 +27,7 @@ const putData = (key, value) => {
       method: 'setItem'
     })
 
-    parent.postMessage(obj, 'http://127.0.0.1:61674/task_4/first.html');
+    parent.postMessage(obj, 'http://127.0.0.1:50570/test-task/task_5/first.html');
 
   } catch (err) {
     console.log(`something went wrong, there is the following error: ${err}`);
@@ -46,7 +48,7 @@ const readData = (key) => {
     method: 'getItem'
   })
 
-  parent.postMessage(obj, 'http://127.0.0.1:61674/task_4/first.html');
+  parent.postMessage(obj, 'http://127.0.0.1:50570/test-task/task_5/first.html');
 };
 
 const removeData = (key) => {
@@ -65,7 +67,7 @@ const removeData = (key) => {
 
   try {
     localStorage.removeItem(key);
-    parent.postMessage(obj, 'http://127.0.0.1:61674/task_4/first.html');
+    parent.postMessage(obj, 'http://127.0.0.1:50570/test-task/task_5/first.html');
   } catch (err) {
     console.log(`something went wrong, there is the following error: ${err}`);
   }
